@@ -1,4 +1,6 @@
 # abcoding
+![CI pipeline](https://github.com/amtb/abcoding/workflows/CI%20pipeline/badge.svg)
+
 Solutions to some problems taken from 
 - [leetcode](https://leetcode.com/problemset/all/)
 - codewars (TBD)
