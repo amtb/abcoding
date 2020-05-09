@@ -1,5 +1,5 @@
 /**
- * Checks if a number is present in a sorted array
+ * Returns `true` or `false` indicating whether the given number appears in the given sorted array.
  */
 export function includes (array, number) {
   const halfIndex = Math.floor(array.length / 2);
