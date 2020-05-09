@@ -32,7 +32,6 @@
 // };
 
 var groupAnagrams = function (strs) {
-
   const getKey = (string) => {
     return string.split('').sort().join();
   };
