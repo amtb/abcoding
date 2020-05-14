@@ -2,7 +2,6 @@
  * The reduce() funcdtion executes a reducer function on each element of the array, resulting in a single output value.
  */
 export async function reduceAsync (array, fn, initial) {
-
   async function exec (item) {
     return await item();
   }

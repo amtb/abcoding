@@ -13,7 +13,6 @@
  */
 
 var getTargetCopy = function (original, cloned, target) {
-
   function find (node, cloneNode) {
     if (!node) {
       return;
