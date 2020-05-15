@@ -3,29 +3,23 @@
  * @return {boolean}
  */
 export function isBalanced (s) {
-  const chars = s.split('');
-  const brackets = [];
-  for (let i = 0, len = chars.length; i < len; i++) {
-    const char = chars[i];
+  const mapping = {
+    '}': '{',
+    ')': '(',
+    ']': '['
+  };
+
+  const signs = [];
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
     if (char === '{' || char === '(' || char === '[') {
-      brackets.push(char);
-    } else if (char === '}') {
-      const popped = brackets.pop();
-      if (popped !== '{') {
-        return false;
-      }
-    } else if (char === ')') {
-      const popped = brackets.pop();
-      if (popped !== '(') {
-        return false;
-      }
-    } else if (char === ']') {
-      const popped = brackets.pop();
-      if (popped !== '[') {
+      signs.push(char);
+    } else if (char === '}' || char === ')' || char === ']') {
+      if (signs.pop() !== mapping[char]) {
         return false;
       }
     }
   }
 
-  return brackets.length === 0;
+  return signs.length === 0;
 }
