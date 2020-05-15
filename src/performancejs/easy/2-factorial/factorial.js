@@ -1,7 +1,7 @@
 /**
  * Returns a number that is the factorial of the given number.
  */
-export function factorial (n) {
+export function factorial(n) {
   if (n <= 1) {
     return 1;
   }

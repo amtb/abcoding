@@ -1,7 +1,7 @@
 /**
  * checks if a number is prime
  */
-export function isPrime (number) {
+export function isPrime(number) {
   const sqrt = Math.sqrt(number);
 
   for (let i = 2; i <= sqrt; i++) {

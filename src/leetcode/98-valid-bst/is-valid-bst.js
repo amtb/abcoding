@@ -2,10 +2,10 @@
  * Definition for a binary tree node.
  */
 
-export function TreeNode (val, left, right) {
-  this.val = (val === undefined ? 0 : val);
-  this.left = (left === undefined ? null : left);
-  this.right = (right === undefined ? null : right);
+export function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
 }
 
 /**
@@ -41,7 +41,7 @@ export function TreeNode (val, left, right) {
 // };
 
 var isValidBST = function (root) {
-  function getValues (node, acc) {
+  function getValues(node, acc) {
     if (!node) {
       return;
     }
@@ -55,7 +55,7 @@ var isValidBST = function (root) {
     if (node.right) {
       getValues(node.right, acc);
     }
-  };
+  }
   const acc = [];
   getValues(root, acc);
 

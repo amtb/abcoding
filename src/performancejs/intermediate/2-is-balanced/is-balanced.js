@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {boolean}
  */
-export function isBalanced (s) {
+export function isBalanced(s) {
   const mapping = {
     '}': '{',
     ')': '(',

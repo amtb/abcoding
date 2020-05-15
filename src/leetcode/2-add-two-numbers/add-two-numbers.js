@@ -1,7 +1,7 @@
 /**
  * Definition for singly-linked list.
  */
-export function ListNode (val) {
+export function ListNode(val) {
   this.val = val;
   this.next = null;
 }
@@ -13,7 +13,6 @@ export function ListNode (val) {
  */
 
 var addTwoNumbers = function (l1, l2) {
-
   const add = (left, right, carry = 0) => {
     if (left || right) {
       const v1 = left ? left.val : 0;

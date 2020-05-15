@@ -1,4 +1,4 @@
-export function isBalanced (string) {
+export function isBalanced(string) {
   const chars = string.split('');
   const brackets = [];
   for (let i = 0, len = chars.length; i < len; i++) {

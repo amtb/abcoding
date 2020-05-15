@@ -1,7 +1,7 @@
 /**
  * times a fn call
  */
-export function time (label, fn, ...args) {
+export function time(label, fn, ...args) {
   console.time(label);
   const start = new Date();
   fn(...args);

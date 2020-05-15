@@ -1,4 +1,4 @@
-export function filter (array, fn) {
+export function filter(array, fn) {
   const items = [];
   array.forEach((element) => {
     if (fn(element)) {

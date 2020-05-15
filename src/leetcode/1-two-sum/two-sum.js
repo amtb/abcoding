@@ -32,7 +32,7 @@ var twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     const complement = target - nums[i];
     if (map[complement]) {
-      const j = map[complement].find(e => e !== i);
+      const j = map[complement].find((e) => e !== i);
       if (j) {
         return [i, j];
       }
