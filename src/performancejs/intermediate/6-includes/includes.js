@@ -1,7 +1,7 @@
 /**
  * Returns `true` or `false` indicating whether the given number appears in the given sorted array.
  */
-export function includes (array, number) {
+export function includes(array, number) {
   const halfIndex = Math.floor(array.length / 2);
   const half = array[halfIndex];
 

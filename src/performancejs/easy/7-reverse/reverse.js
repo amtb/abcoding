@@ -1,7 +1,7 @@
 /**
  * Reverses the given string
  */
-export function reverse (string) {
+export function reverse(string) {
   const len = string.length;
   let reversed = '';
 

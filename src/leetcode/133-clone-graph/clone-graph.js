@@ -6,7 +6,7 @@
  * };
  */
 class Node {
-  constructor (val, neighbors) {
+  constructor(val, neighbors) {
     this.val = val === undefined ? 0 : val;
     this.neighbors = neighbors === undefined ? [] : neighbors;
   }
@@ -19,7 +19,7 @@ class Node {
 var cloneGraph = function (graph) {
   const cache = {};
 
-  function cloneNode (node) {
+  function cloneNode(node) {
     if (!node) {
       return node;
     }

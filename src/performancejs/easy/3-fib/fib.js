@@ -1,7 +1,7 @@
 /**
  * Naive fibonacci computation
  */
-export function fib (n) {
+export function fib(n) {
   if (n <= 1) {
     return n;
   }

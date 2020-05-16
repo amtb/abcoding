@@ -22,5 +22,7 @@ const arrayToLinkedList = function (array) {
 
 it('reverseList', () => {
   expect(reverseList(arrayToLinkedList([]))).toEqual(arrayToLinkedList([]));
-  expect(reverseList(arrayToLinkedList([1, 2, 3, 4, 5]))).toEqual(arrayToLinkedList([5, 4, 3, 2, 1]));
+  expect(reverseList(arrayToLinkedList([1, 2, 3, 4, 5]))).toEqual(
+    arrayToLinkedList([5, 4, 3, 2, 1])
+  );
 });
