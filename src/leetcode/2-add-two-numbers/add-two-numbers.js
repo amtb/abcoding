@@ -1,11 +1,4 @@
-/**
- * Definition for singly-linked list.
- */
-export function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
-
+import { ListNode } from '../../ds';
 /**
  * @param {ListNode} l1
  * @param {ListNode} l2
@@ -26,8 +19,7 @@ var addTwoNumbers = function (l1, l2) {
       const nl = left ? left.next : null;
       const nr = right ? right.next : null;
 
-      const node = new ListNode();
-      node.val = total;
+      const node = new ListNode(total);
       node.next = add(nl, nr, carry);
 
       return node;
