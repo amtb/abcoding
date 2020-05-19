@@ -1,0 +1,1 @@
+see [is-palindrome.js](../../performancejs/easy/9-is-palindrome/is-palindrome.js)
