@@ -1,4 +1,30 @@
 /**
+ * k closest points
+ */
+export function kClosestPoints(inputs, K) {
+  class Point {
+    constructor([x, y]) {
+      this.coordinates = [x, y];
+      this.distance = x ** 2 + y ** 2;
+    }
+
+    [Symbol.toPrimitive]() {
+      return this.distance;
+    }
+  }
+  const points = inputs
+    .map((coordinates) => new Point(coordinates))
+    .sort((a, b) => a - b);
+
+  const res = [];
+  for (let i = 0; i < K; i++) {
+    res.push(points[i].coordinates);
+  }
+
+  return res;
+}
+
+/**
  * @param {number[][]} points
  * @param {number} K
  * @return {number[][]}
