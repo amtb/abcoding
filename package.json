@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "yarn lint --fix && prettier \"src/**/*.js\" --write",
     "lint": "eslint src/**/*.js",
     "test": "jest"
   },
