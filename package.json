@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format": "yarn lint --fix && prettier \"src/**/*.js\" --write",
-    "gen": "node scripts/generate.js ",
+    "genr": "node scripts/generate.js ",
     "lint": "eslint src/**/*.js",
     "test": "jest"
   },
