@@ -35,7 +35,7 @@ var mergeTwoLists = function (l1, l2) {
     }
   }
 
-  // one of the lists where empty
+  // one of the lists was empty
   if (curr !== null) {
     curr.next = curr1 || curr2;
   } else {
