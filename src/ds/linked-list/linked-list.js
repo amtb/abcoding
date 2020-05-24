@@ -8,26 +8,28 @@ export class ListNode {
   }
 }
 
-/**
- * converts an array to a linked list
- * @param {any[]} array
- */
-export function arrayToList(array) {
-  let head = null;
+export class LinkedList {
+  constructor() {
+    this.head = null;
+    this._last = null;
+  }
 
-  for (let i = 0; i < array.length; i++) {
-    const val = array[i];
-    const node = new ListNode(val);
-    if (head === null) {
-      head = node;
+  insert(value) {
+    const node = new ListNode(value);
+    if (this.head === null) {
+      this.head = this._last = node;
     } else {
-      let curr = head;
-      while (curr.next) {
-        curr = curr.next;
-      }
-      curr.next = node;
+      this._last.next = node;
+      this._last = node;
     }
   }
 
-  return head;
+  /**
+   * @param {any[]} array
+   */
+  static fromArray(array) {
+    const list = new LinkedList();
+    array.forEach((item) => list.insert(item));
+    return list.head;
+  }
 }

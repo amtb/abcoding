@@ -1,20 +1,23 @@
 import mergeTwoLists from './merge-two-lists';
-import { arrayToList } from '../../ds';
+import { LinkedList } from '../../ds';
 
 describe('mergeTwoLists', () => {
   it('works on empty lists', () => {
-    expect(mergeTwoLists(arrayToList([]), arrayToList([]))).toEqual(
-      arrayToList([])
-    );
+    expect(
+      mergeTwoLists(LinkedList.fromArray([]), LinkedList.fromArray([]))
+    ).toEqual(LinkedList.fromArray([]));
 
-    expect(mergeTwoLists(arrayToList([]), arrayToList([1]))).toEqual(
-      arrayToList([1])
-    );
+    expect(
+      mergeTwoLists(LinkedList.fromArray([]), LinkedList.fromArray([1]))
+    ).toEqual(LinkedList.fromArray([1]));
   });
 
   it('merges correctly', () => {
     expect(
-      mergeTwoLists(arrayToList([1, 2, 4]), arrayToList([1, 3, 4]))
-    ).toEqual(arrayToList([1, 1, 2, 3, 4, 4]));
+      mergeTwoLists(
+        LinkedList.fromArray([1, 2, 4]),
+        LinkedList.fromArray([1, 3, 4])
+      )
+    ).toEqual(LinkedList.fromArray([1, 1, 2, 3, 4, 4]));
   });
 });
