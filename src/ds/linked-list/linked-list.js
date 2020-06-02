@@ -6,6 +6,20 @@ export class ListNode {
     this.val = val;
     this.next = next || null;
   }
+
+  /**
+   * @returns {ListNode[]}
+   */
+  getNodes() {
+    const nodes = [];
+    let curr = this;
+    while (curr) {
+      nodes.push(curr);
+      curr = curr.next;
+    }
+
+    return nodes;
+  }
 }
 
 export class LinkedList {
