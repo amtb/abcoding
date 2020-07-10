@@ -1,5 +1,5 @@
 import Trie from './trie';
-import { SimpleTrie } from './simple-trie';
+import { SimpleTrie } from './trie-quick';
 
 it('Trie', () => {
   const trie = new Trie();
