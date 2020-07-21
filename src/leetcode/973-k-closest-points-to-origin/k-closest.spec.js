@@ -1,51 +1,37 @@
-import kClosest, { kClosestPoints } from './k-closest';
+import kClosest, { kClosestPoints, kClosestPts } from './k-closest';
 
 it('kClosest', () => {
-  expect(
-    kClosest(
-      [
-        [1, 3],
-        [-2, 2]
-      ],
-      1
-    )
-  ).toEqual([[-2, 2]]);
-  expect(
-    kClosest(
-      [
+  const fns = [kClosest, kClosestPoints, kClosestPts];
+  const cases = [
+    {
+      in: {
+        points: [
+          [1, 3],
+          [-2, 2]
+        ],
+        k: 1
+      },
+      out: [[-2, 2]]
+    },
+    {
+      in: {
+        points: [
+          [3, 3],
+          [5, -1],
+          [-2, 4]
+        ],
+        k: 2
+      },
+      out: [
         [3, 3],
-        [5, -1],
         [-2, 4]
-      ],
-      2
-    )
-  ).toEqual([
-    [3, 3],
-    [-2, 4]
-  ]);
-});
+      ]
+    }
+  ];
 
-it('kClosestPoints', () => {
-  expect(
-    kClosestPoints(
-      [
-        [1, 3],
-        [-2, 2]
-      ],
-      1
-    )
-  ).toEqual([[-2, 2]]);
-  expect(
-    kClosestPoints(
-      [
-        [3, 3],
-        [5, -1],
-        [-2, 4]
-      ],
-      2
-    )
-  ).toEqual([
-    [3, 3],
-    [-2, 4]
-  ]);
+  cases.forEach(({ in: { points, k }, out: expected }) => {
+    fns.forEach((fn) =>
+      expect(fn(points, k)).toEqual(expect.arrayContaining(expected))
+    );
+  });
 });

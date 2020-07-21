@@ -1,17 +1,20 @@
+import { MaxHeap } from '../../ds/';
+
+class Point {
+  constructor([x, y]) {
+    this.coordinates = [x, y];
+    this.distance = x ** 2 + y ** 2;
+  }
+
+  [Symbol.toPrimitive]() {
+    return this.distance;
+  }
+}
+
 /**
  * k closest points
  */
 export function kClosestPoints(inputs, K) {
-  class Point {
-    constructor([x, y]) {
-      this.coordinates = [x, y];
-      this.distance = x ** 2 + y ** 2;
-    }
-
-    [Symbol.toPrimitive]() {
-      return this.distance;
-    }
-  }
   const points = inputs
     .map((coordinates) => new Point(coordinates))
     .sort((a, b) => a - b);
@@ -48,5 +51,22 @@ var kClosest = function (points, K) {
 
   return res;
 };
+
+/**
+ * @param {number[][]} points
+ * @param {number} K
+ * @return {number[][]}
+ */
+export function kClosestPts(points, K) {
+  const maxHeap = new MaxHeap();
+  points.forEach((coordinates) => {
+    maxHeap.insert(new Point(coordinates));
+    if (maxHeap.size > K) {
+      maxHeap.deleteMax();
+    }
+  });
+
+  return maxHeap.elements.map((point) => point.coordinates);
+}
 
 export default kClosest;
