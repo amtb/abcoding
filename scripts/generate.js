@@ -1,6 +1,7 @@
 const fs = require('fs');
 const argv = require('yargs').argv;
 const kebabCase = require('lodash/kebabCase');
+const simpleGit = require('simple-git');
 const templates = require('./templates');
 
 const problem = argv.p;
@@ -16,6 +17,16 @@ const tpl = templates(fn, fileName);
 
 (async () => {
   await fs.mkdirSync(folderPath);
-  await fs.writeFileSync(`${folderPath}/${fileName}.js`, tpl.fn);
-  await fs.writeFileSync(`${folderPath}/${fileName}.spec.js`, tpl.spec);
+
+  const files = [
+    { path: `${folderPath}/${fileName}.js`, content: tpl.fn },
+    { path: `${folderPath}/${fileName}.spec.js`, content: tpl.spec }
+  ];
+
+  files.forEach(
+    async ({ path, content }) => await fs.writeFileSync(path, content)
+  );
+
+  const git = simpleGit();
+  await git.checkout(['-b', fileName]);
 })();
