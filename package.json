@@ -6,6 +6,7 @@
   "scripts": {
     "format": "yarn lint --fix && prettier \"src/**/*.js\" --write",
     "gen": "node scripts/generate.js ",
+    "git:clean-branches": "git branch --merged | grep -v master | xargs git branch -d",
     "lint": "eslint src/**/*.js",
     "test": "jest"
   },
