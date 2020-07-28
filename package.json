@@ -36,7 +36,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-merge": "git:clean-branches"
+      "post-merge": "yarn git:clean-branches"
     }
   },
   "lint-staged": {
