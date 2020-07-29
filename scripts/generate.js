@@ -2,6 +2,8 @@ const fs = require('fs');
 const argv = require('yargs').argv;
 const kebabCase = require('lodash/kebabCase');
 const simpleGit = require('simple-git');
+const colors = require('colors/safe');
+
 const templates = require('./templates');
 
 const problem = argv.p;
@@ -16,17 +18,26 @@ const fileName = kebabCase(fn);
 const tpl = templates(fn, fileName);
 
 (async () => {
-  await fs.mkdirSync(folderPath);
+  try {
+    await fs.mkdirSync(folderPath);
+    console.log(colors.green('✔️  folder created'));
 
-  const files = [
-    { path: `${folderPath}/${fileName}.js`, content: tpl.fn },
-    { path: `${folderPath}/${fileName}.spec.js`, content: tpl.spec }
-  ];
+    const files = [
+      { path: `${folderPath}/${fileName}.js`, content: tpl.fn },
+      { path: `${folderPath}/${fileName}.spec.js`, content: tpl.spec }
+    ];
 
-  files.forEach(
-    async ({ path, content }) => await fs.writeFileSync(path, content)
-  );
+    files.forEach(
+      async ({ path, content }) => await fs.writeFileSync(path, content)
+    );
 
-  const git = simpleGit();
-  await git.checkout(['-b', fileName]);
+    console.log(colors.green('✔️  files generated'));
+
+    const git = simpleGit();
+    await git.checkout(['-b', fileName]);
+    console.log(colors.green(`✔️  switched to branch ${fileName}`));
+  } catch (error) {
+    console.log(colors.red('❌  something went wrong'));
+    console.error(error);
+  }
 })();
