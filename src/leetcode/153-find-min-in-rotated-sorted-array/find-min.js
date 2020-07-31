@@ -4,13 +4,8 @@
  */
 var findMin = function (nums) {
   const find = (low, high) => {
-    const diff = high - low;
-    if (diff === 0) {
-      return nums[low];
-    }
-    if (diff === 1) {
+    if (low === high || low === high - 1)
       return Math.min(nums[low], nums[high]);
-    }
 
     const half = Math.floor((low + high) / 2);
     if (nums[half] > nums[high]) {
