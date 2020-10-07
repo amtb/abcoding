@@ -34,10 +34,15 @@ const tpl = templates(fn, fileName);
     console.log(colors.green('✔️  files generated'));
 
     const git = simpleGit();
-    await git.checkout(['-b', fileName]);
-    console.log(colors.green(`✔️  switched to branch ${fileName}`));
+    const currentBranch = await git.branch(['--show-current']);
+    if (currentBranch !== 'master') {
+      console.warn(colors.yellow('You are not on the main branch !'));
+    } else {
+      await git.checkout(['-b', fileName]);
+      console.info(colors.green(`✔️  switched to branch ${fileName}`));
+    }
   } catch (error) {
-    console.log(colors.red('❌  something went wrong'));
+    console.info(colors.red('❌  something went wrong'));
     console.error(error);
   }
 })();
