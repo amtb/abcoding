@@ -1,30 +1,45 @@
 const fs = require('fs');
+const mustache = require('mustache');
 const argv = require('yargs').argv;
 const kebabCase = require('lodash/kebabCase');
 const simpleGit = require('simple-git');
 const colors = require('colors/safe');
 
-const templates = require('./templates');
-
+// read argument from cli
 const problem = argv.p;
-const fn = argv.f;
+const fnName = argv.f;
 
 const folder = problem
   .toLowerCase()
   .replace(/[^\s\w]/g, '')
   .replace(/\s/g, '-');
+
 const folderPath = `src/leetcode/${folder}`;
-const fileName = kebabCase(fn);
-const tpl = templates(fn, fileName);
+const fileName = kebabCase(fnName);
 
 (async () => {
   try {
     await fs.mkdirSync(folderPath);
     console.log(colors.green('✔️  folder created'));
 
+    const functionTemplate = await fs.readFileSync(
+      'templates/function.mustache',
+      'utf-8'
+    );
+    const specTemplate = await fs.readFileSync(
+      'templates/spec.mustache',
+      'utf-8'
+    );
+
     const files = [
-      { path: `${folderPath}/${fileName}.js`, content: tpl.fn },
-      { path: `${folderPath}/${fileName}.spec.js`, content: tpl.spec }
+      {
+        path: `${folderPath}/${fileName}.js`,
+        content: mustache.render(functionTemplate, { fnName })
+      },
+      {
+        path: `${folderPath}/${fileName}.spec.js`,
+        content: mustache.render(specTemplate, { fnName, fileName })
+      }
     ];
 
     files.forEach(
