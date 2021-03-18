@@ -1,7 +1,10 @@
-import hammingWeight, { numberOf1Bits } from './hamming-weight';
+import hammingWeight, {
+  anotherHammingWeight,
+  numberOf1Bits
+} from './hamming-weight';
 
 it('hammingWeight', () => {
-  const fns = [hammingWeight, numberOf1Bits];
+  const fns = [hammingWeight, numberOf1Bits, anotherHammingWeight];
 
   const cases = [
     { n: 0b00000000000000000000000000001011, ones: 3 },
