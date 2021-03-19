@@ -30,4 +30,15 @@ export function numberOf1Bits(n) {
   return count;
 }
 
+export function anotherHammingWeight(n) {
+  let count = 0;
+  do {
+    const r = n % 2;
+    count += r;
+    n = (n - r) / 2;
+  } while (n);
+
+  return count;
+}
+
 export default hammingWeight;
