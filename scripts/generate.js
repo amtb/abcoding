@@ -49,8 +49,8 @@ const fileName = kebabCase(fnName);
     console.log(colors.green('✔️  files generated'));
 
     const git = simpleGit();
-    const currentBranch = await git.branch(['--show-current']);
-    if (currentBranch !== 'main') {
+    const gitBranch = await git.branch('--show-current');
+    if (gitBranch && gitBranch.current !== 'main') {
       console.warn(colors.yellow('You are not on the main branch !'));
     } else {
       await git.checkout(['-b', fileName]);
