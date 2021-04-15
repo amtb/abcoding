@@ -1,5 +1,10 @@
 import {{fnName}} from './{{fileName}}';
 
 it('{{fnName}}', () => {
-  expect({{fnName}}).toBeDefined();
+  const cases = [
+    {inputs: [], output: 0},
+    {inputs: [], output: 0}
+  ];
+
+  cases.forEach(({inputs, output}) =>expect({{fnName}}(...inputs)).toBe(output));
 });
