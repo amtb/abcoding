@@ -1,34 +1,34 @@
-import wordBreak, { anotherWordBreak } from './word-break';
+import wordBreak, { anotherWordBreak, bestWordBreak } from './word-break';
 
-it('wordBreak (true)', () => {
-  expect(wordBreak('leetcode', ['leet', 'code'])).toBe(true);
-  expect(anotherWordBreak('leetcode', ['leet', 'code'])).toBe(true);
+it('wordBreak', () => {
+  const cases = [
+    { inputs: ['leetcode', ['leet', 'code']], output: true },
+    { inputs: ['applepenapple', ['apple', 'pen']], output: true },
+    { inputs: ['cars', ['car', 'ca', 'rs']], output: true },
+    { inputs: ['catsandog', ['cats', 'dog', 'sand', 'cat']], output: false },
+    { inputs: ['acccbccb', ['cc', 'bc', 'ac', 'ca']], output: false },
+    {
+      inputs: [
+        'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab',
+        [
+          'a',
+          'aa',
+          'aaa',
+          'aaaa',
+          'aaaaa',
+          'aaaaaa',
+          'aaaaaaa',
+          'aaaaaaaa',
+          'aaaaaaaaa',
+          'aaaaaaaaaa'
+        ]
+      ],
+      output: false
+    }
+  ];
 
-  expect(wordBreak('applepenapple', ['apple', 'pen'])).toBe(true);
-  expect(anotherWordBreak('applepenapple', ['apple', 'pen'])).toBe(true);
-
-  expect(wordBreak('cars', ['car', 'ca', 'rs'])).toBe(true);
-});
-
-it('wordBreak (false)', () => {
-  expect(wordBreak('catsandog', ['cats', 'dog', 'sand', 'cat'])).toBe(false);
-  expect(wordBreak('acccbccb', ['cc', 'bc', 'ac', 'ca'])).toBe(false);
-
-  expect(
-    anotherWordBreak(
-      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab',
-      [
-        'a',
-        'aa',
-        'aaa',
-        'aaaa',
-        'aaaaa',
-        'aaaaaa',
-        'aaaaaaa',
-        'aaaaaaaa',
-        'aaaaaaaaa',
-        'aaaaaaaaaa'
-      ]
-    )
-  ).toBe(false);
+  const fns = [wordBreak, anotherWordBreak, bestWordBreak];
+  cases.forEach(({ inputs, output }) =>
+    fns.forEach((fn) => expect(fn(...inputs)).toBe(output))
+  );
 });

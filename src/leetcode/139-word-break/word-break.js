@@ -1,4 +1,6 @@
 /**
+ * 139. Word Break
+ * https://leetcode.com/problems/word-break/
  * @param {string} s
  * @param {string[]} wordDict
  * @return {boolean}
@@ -124,6 +126,26 @@ export function anotherWordBreak(s, wordDict) {
   }
 
   return matrix[s];
+}
+
+export function bestWordBreak(s, wordDict) {
+  const memo = {};
+  const findCombinations = (target = s) => {
+    if (target in memo) return memo[target];
+    if (target === '') return true;
+
+    for (const word of wordDict) {
+      if (target.startsWith(word)) {
+        const suffix = target.slice(word.length);
+        const suffixFound = findCombinations(suffix);
+        if (suffixFound) return (memo[target] = true);
+      }
+    }
+
+    return (memo[target] = false);
+  };
+
+  return findCombinations();
 }
 
 export default wordBreak;
