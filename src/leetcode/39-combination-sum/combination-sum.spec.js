@@ -1,4 +1,4 @@
-import combinationSum from './combination-sum';
+import combinationSum, { combinationSumTwo } from './combination-sum';
 
 it('combinationSum', () => {
   const cases = [
@@ -18,9 +18,13 @@ it('combinationSum', () => {
     }
   ];
 
+  const fns = [combinationSum, combinationSumTwo];
+
   cases.forEach(({ candidates, target, solution }) => {
-    const computed = combinationSum(candidates, target);
-    expect(computed.length).toBe(solution.length);
-    expect(computed).toEqual(expect.arrayContaining(solution));
+    fns.forEach((fn) => {
+      const computed = fn(candidates, target);
+      expect(computed.length).toBe(solution.length);
+      expect(computed).toEqual(expect.arrayContaining(solution));
+    });
   });
 });
