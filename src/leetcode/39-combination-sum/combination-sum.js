@@ -50,3 +50,24 @@ var combinationSum = function (candidates, target) {
 };
 
 export default combinationSum;
+
+export function combinationSumTwo(candidates, target) {
+  const all = [];
+  const count = (t = target, start = 0, path = []) => {
+    if (t === 0) {
+      all.push(path);
+      return;
+    }
+
+    if (t > 0) {
+      for (let i = start; i < candidates.length; i++) {
+        const num = candidates[i];
+        const remainder = t - num;
+        count(remainder, i, [...path, num]);
+      }
+    }
+  };
+
+  count();
+  return all;
+}
