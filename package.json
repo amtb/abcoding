@@ -33,7 +33,7 @@
     "lodash": "^4.17.19",
     "mustache": "^4.1.0",
     "prettier": "2.3.1",
-    "simple-git": "^2.15.0",
+    "simple-git": "^3.16.0",
     "yargs": "^17.0.1"
   },
   "husky": {
